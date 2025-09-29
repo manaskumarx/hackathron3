@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Buy Now - Amul</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root{--primary:#0b6fb7;--accent:#ffb400;--bg:#f5f9ff;--muted:#6b7280;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#111;}
+    a{text-decoration:none;color:inherit;transition:.3s;}
+    a:hover{color:var(--primary);}
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:100;background:#fff;padding:12px 20px;
+      display:flex;align-items:center;justify-content:space-between;
+      box-shadow:0 1px 6px rgba(0,0,0,0.1);}
+    .logo{display:flex;gap:10px;align-items:center;}
+    .nav-links a{margin:0 10px;color:var(--muted);font-weight:500;position:relative;}
+    .nav-links a.active{color:var(--primary);font-weight:700;}
+    .nav-links a.cta{background:var(--primary);color:#fff;padding:6px 12px;border-radius:6px;}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--primary);transition:.3s;}
+    .nav-links a:hover::after{width:100%;}
+
+    main{padding:40px 20px;max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr;gap:25px;}
+    h1{margin-bottom:20px;color:var(--primary);text-align:center;}
+
+    /* CART ITEMS */
+    .cart-items{background:#fff;padding:20px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.08);}
+    .item{display:flex;align-items:center;gap:15px;margin-bottom:15px;padding-bottom:15px;border-bottom:1px solid #eee;}
+    .item img{width:80px;height:80px;border-radius:10px;object-fit:cover;}
+    .item h3{font-size:16px;margin-bottom:4px;}
+    .price{color:var(--primary);font-weight:600;}
+    .qty{display:flex;align-items:center;gap:6px;margin-top:6px;}
+    .qty button{background:var(--primary);color:#fff;border:0;padding:4px 10px;border-radius:6px;cursor:pointer;}
+    .qty input{width:40px;text-align:center;border:1px solid #ddd;border-radius:6px;}
+    .remove{margin-left:auto;color:red;cursor:pointer;font-size:18px;}
+
+    /* SUMMARY */
+    .summary{background:#fff;padding:20px;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,0.08);}
+    .summary h2{margin-bottom:15px;}
+    .summary .line{display:flex;justify-content:space-between;margin:6px 0;}
+    .summary strong{font-size:18px;}
+    .checkout-btn{margin-top:15px;width:100%;padding:12px;border:0;border-radius:8px;background:var(--accent);font-size:16px;font-weight:600;cursor:pointer;}
+    .checkout-btn:hover{background:#ff9800;}
+
+    /* FORM */
+    .checkout-form{margin-top:30px;}
+    .checkout-form h2{margin-bottom:12px;color:var(--primary);}
+    .form-group{margin-bottom:12px;}
+    input,select{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px;}
+    input:focus,select:focus{border-color:var(--primary);box-shadow:0 0 6px rgba(11,111,183,0.3);outline:none;}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){main{grid-template-columns:1fr;}}
+    
+    /* FOOTER */
+    footer{background:#0b6fb7;color:#fff;padding:20px;margin-top:40px;}
+    footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+    .footer-social a{margin:0 8px;color:#fff;font-size:18px;transition:.3s;}
+    .footer-social a:hover{color:var(--accent);transform:scale(1.2);}
+    footer .links{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+    footer .links a{color:#f0f0f0;}
+    footer .links a:hover{color:var(--accent);}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="amul-logo.jpg" height="30">
+    <img src="amul-write.jpg" height="30">
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+   <a class="cta" class="active" href="buynow.html" >Buy Now</a>
+    
+  </nav>
+</header>
+
+<h1>Buy Your Favorite Amul Products</h1>
+
+<main>
+  <!-- CART ITEMS -->
+  <div class="cart-items">
+    <div class="item">
+      <img src="amu-butter.jpg" alt="Butter">
+      <div>
+        <h3>Amul Butter</h3>
+        <div class="price">₹95</div>
+        <div class="qty">
+          <button>-</button>
+          <input type="number" value="1" min="1">
+          <button>+</button>
+        </div>
+      </div>
+      <div class="remove"><i class="fas fa-trash"></i></div>
+    </div>
+    <div class="item">
+      <img src="amul-cheese.jpg" alt="Cheese">
+      <div>
+        <h3>Amul Cheese</h3>
+        <div class="price">₹120</div>
+        <div class="qty">
+          <button>-</button>
+          <input type="number" value="2" min="1">
+          <button>+</button>
+        </div>
+      </div>
+      <div class="remove"><i class="fas fa-trash"></i></div>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <h2>Order Summary</h2>
+    <div class="line"><span>Subtotal</span><span>₹335</span></div>
+    <div class="line"><span>Delivery</span><span>₹20</span></div>
+    <div class="line"><strong>Total</strong><strong>₹355</strong></div>
+    <button class="checkout-btn">Proceed to Checkout</button>
+
+    <!-- FORM -->
+    <div class="checkout-form">
+      <h2>Checkout Details</h2>
+      <div class="form-group"><input type="text" placeholder="Full Name" required></div>
+      <div class="form-group"><input type="text" placeholder="Address" required></div>
+      <div class="form-group"><input type="text" placeholder="City" required></div>
+      <div class="form-group"><input type="text" placeholder="Pincode" required></div>
+      <div class="form-group">
+        <select>
+          <option>Payment Method</option>
+          <option>Cash on Delivery</option>
+          <option>UPI / Netbanking</option>
+          <option>Credit / Debit Card</option>
+        </select>
+      </div>
+      <button class="checkout-btn">Place Order</button>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="row">
+    <strong>AMUL-Demo ©2025</strong>
+    <div class="footer-social">
+      <a href="https://facebook.com/amul" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/amul_india" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/amul_india" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

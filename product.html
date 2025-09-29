@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products - Amul</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{
+      --primary:#0b6fb7;
+      --accent:#ffb400;
+      --bg:#f5f9ff;
+      --card:#ffffff;
+      --muted:#6b7280;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#111;line-height:1.6;}
+    a{color:inherit;text-decoration:none;transition:0.3s;}
+    a:hover{color:var(--primary);}
+    
+    /* HEADER */
+    header{position:sticky;top:0;z-index:60;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 1px 6px rgba(16,24,40,0.06);}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:700;}
+    nav{display:flex;gap:18px;align-items:center;flex:1;justify-content:center;}
+    .nav-links a{padding:8px 10px;border-radius:8px;font-weight:500;color:var(--muted);position:relative;}
+    .nav-links a.active{color:var(--primary);font-weight:700;}
+    .nav-links a.cta{background:var(--primary);color:#fff;padding:8px 12px;border-radius:8px;}
+    .nav-links a.cta:hover{background:#094a7e;}
+    .nav-links a::after{content:"";position:absolute;width:0;height:2px;bottom:0;left:0;background:var(--primary);transition:0.3s;}
+    .nav-links a:hover::after{width:100%;}
+    .search-bar{display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 10px;border-radius:8px;}
+    .search-bar input{border:0;outline:none;background:transparent;}
+    .search-bar i{color:var(--muted);}
+    
+    /* HERO with VIDEO */
+    .hero{
+      position:relative;
+      height:60vh;
+      min-height:350px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#fff;
+      overflow:hidden;
+    }
+    .hero video{
+      position:absolute;
+      top:0;left:0;width:100%;height:100%;object-fit:cover;
+      z-index:-1;
+    }
+    .hero::after{
+      content:"";position:absolute;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.5);z-index:-1;
+    }
+    .hero h1{
+      font-size:clamp(32px,6vw,60px);
+      font-weight:800;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+    
+    /* PRODUCTS */
+    main{padding:40px 20px;}
+    .products-title{text-align:center;margin-bottom:20px;font-size:28px;color:var(--primary);}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+    .card{background:var(--card);padding:16px;border-radius:14px;box-shadow:0 6px 18px rgba(15,23,42,0.08);display:flex;flex-direction:column;gap:8px;transition:0.3s;position:relative;overflow:hidden;}
+    .card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 12px 28px rgba(0,0,0,0.2);}
+    .card img{width:100%;height:180px;object-fit:cover;border-radius:8px;}
+    .card h3{margin:0;font-size:18px;}
+    .card .meta{display:flex;justify-content:space-between;color:var(--muted);font-weight:600;}
+    .card .buy{margin-top:6px;padding:10px;border-radius:10px;border:0;background:linear-gradient(135deg,#ffb400,#ff6b00);color:#fff;font-weight:700;cursor:pointer;transition:0.3s;}
+    .card .buy:hover{background:#ff9800;transform:scale(1.08);}
+    .card .tag{position:absolute;top:10px;left:-30px;background:#ff6b00;color:#fff;padding:6px 40px;transform:rotate(-45deg);font-size:12px;font-weight:bold;}
+
+    /* EXTRA SECTIONS */
+    .categories{margin:60px 20px;text-align:center;}
+    .categories h2{margin-bottom:20px;font-size:26px;color:var(--primary);}
+    .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .cat-item{background:#fff;padding:20px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,0.08);transition:0.3s;}
+    .cat-item:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 10px 24px rgba(0,0,0,0.15);}
+    .cat-item i{font-size:36px;color:#ff9800;margin-bottom:12px;}
+    .cat-item h3{margin-bottom:6px;color:#333;}
+
+    .cta-banner{margin:60px 20px;padding:40px;text-align:center;color:#fff;border-radius:18px;background:linear-gradient(135deg,#0b6fb7,#4fc3f7);}
+    .cta-banner h2{margin-bottom:12px;font-size:28px;}
+    .cta-banner a{display:inline-block;margin-top:10px;padding:12px 20px;background:#ffb400;color:#fff;font-weight:bold;border-radius:10px;transition:0.3s;}
+    .cta-banner a:hover{background:#ff9800;transform:scale(1.05);}
+    
+    /* FOOTER */
+    footer{margin-top:40px;padding:20px;background:#0b6fb7;color:#fff;}
+    footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+    .footer-social a{margin:0 8px;color:#fff;font-size:18px;transition:0.3s;}
+    .footer-social a:hover{color:var(--accent);transform:scale(1.2);}
+    footer .links{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+    footer .links a{color:#f0f0f0;font-size:14px;}
+    footer .links a:hover{color:var(--accent);}
+    
+    /* RESPONSIVE */
+    @media (max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}.cat-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:768px){
+      .grid{grid-template-columns:repeat(2,1fr);}
+      .search-bar{display:none;}
+      .cat-grid{grid-template-columns:1fr;}
+    }
+    @media (max-width:480px){.grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <img src="images/amul-logo.jpg" alt="Amul Logo" height="30">
+    <img src="images/amul-write.jpg" alt="Amul Text" height="30">
+  </div>
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a class="active">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="buynow.html">Buy Now</a>
+    </div>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+    <i class="fas fa-search"></i>
+  </div>
+</header>
+
+<!-- HERO with VIDEO BG -->
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="product.mp4" type="video/mp4">
+  </video>
+  <h1>Our Products</h1>
+</section>
+
+<!-- PRODUCTS GRID -->
+<main>
+  <h2 class="products-title">Popular Choices</h2>
+  <div class="grid">
+    <div class="card"><div class="tag">Best Seller</div><img src="amu-butter.jpg"><h3>Butter</h3><div class="meta"><div>₹95</div></div><button class="buy">Add</button></div>
+    <div class="card"><div class="tag">Hot</div><img src="amul-banner.jpg"><h3>Milk</h3><div class="meta"><div>₹55</div></div><button class="buy">Add</button></div>
+    <div class="card"><img src="amul-cheese.jpg"><h3>Cheese</h3><div class="meta"><div>₹120</div></div><button class="buy">Add</button></div>
+    <div class="card"><img src="milk-splash.jpg"><h3>Milk Bottle</h3><div class="meta"><div>₹32</div></div><button class="buy">Add</button></div>
+  </div>
+</main>
+
+<!-- CATEGORIES / EXTRA SECTION -->
+<section class="categories">
+  <h2>Explore by Category</h2>
+  <div class="cat-grid">
+    <div class="cat-item"><i class="fas fa-ice-cream"></i><h3>Ice Creams</h3><p>Delicious flavors for every season</p></div>
+    <div class="cat-item"><i class="fas fa-mug-hot"></i><h3>Beverages</h3><p>Healthy flavored milk & drinks</p></div>
+    <div class="cat-item"><i class="fas fa-cheese"></i><h3>Dairy Products</h3><p>Cheese, butter, ghee & more</p></div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Love Our Products?</h2>
+  <p>Buy fresh Amul items online and get them delivered to your doorstep.</p>
+  <a href="buynow.html">Buy Now</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="row">
+    <strong>AMUL-Demo ©2025</strong>
+    <div class="footer-social">
+      <a href="https://facebook.com/amul" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/amul_india" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/amul_india" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>www.amul.com</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --primary:#0b6fb7;
+      --accent:#ffb400;
+      --bg:#f5f9ff;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --radius:14px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:#111;}
+    a{color:inherit;text-decoration:none;transition:0.3s;}
+    a:hover{color:var(--primary);}
+
+    /* HEADER */
+    .site-header{position:sticky;top:0;z-index:60;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;box-shadow:0 1px 6px rgba(16,24,40,0.06);}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:700;}
+    nav{display:flex;gap:18px;align-items:center;flex:1;justify-content:center;}
+    .nav-links a{padding:8px 10px;border-radius:8px;font-weight:500;color:var(--muted);position:relative;}
+    .nav-links a.active{color:var(--primary);font-weight:700;}
+    .nav-links a::after{content:"";position:absolute;width:0;height:2px;bottom:0;left:0;background:var(--primary);transition:0.3s;}
+    .nav-links a:hover::after{width:100%;}
+    .nav-links a.cta{background:var(--primary);color:#fff;padding:8px 12px;border-radius:8px;}
+    .nav-links a.cta:hover{background:#094a7e;}
+    .search-bar{display:flex;align-items:center;gap:6px;background:#f1f5f9;padding:6px 10px;border-radius:8px;}
+    .search-bar input{border:0;outline:none;background:transparent;}
+    .search-bar i{color:var(--muted);}
+
+    /* HERO */
+    .hero{position:relative;height:70vh;min-height:400px;border-radius:18px;margin:18px;overflow:hidden;display:flex;align-items:center;justify-content:space-between;color:#fff;}
+    .hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;}
+    .hero .content{max-width:50%;padding:40px;}
+    .hero h1{margin:0;font-size:clamp(28px,4.5vw,44px);line-height:1.05;}
+    .hero p{margin:12px 0 18px;color:#f0f9ff;}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,#ffb400,#ff6b00);color:#fff;font-weight:700;transition:0.3s;}
+    .btn:hover{transform:translateY(-2px) scale(1.05);}
+
+    /* FEATURES */
+    .features{display:flex;gap:12px;margin:18px;}
+    .feature-card{flex:1;background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.04);text-align:center;transition:0.3s;}
+    .feature-card i{font-size:32px;color:var(--primary);margin-bottom:12px;transition:0.3s;}
+    .feature-card:hover{transform:translateY(-6px) scale(1.05);box-shadow:0 10px 28px rgba(0,0,0,0.2);background:linear-gradient(135deg,#ca0c05,#4fc3f7);color:#fff;}
+    .feature-card:hover i{color:#fff;transform:scale(1.2) rotate(10deg);}
+
+    /* PRODUCTS */
+    .products-wrap{margin:40px 18px;text-align:center;}
+    .products-wrap h2{font-size:28px;margin-bottom:20px;color:#0b6fb7;}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+    .card{background:#fff;padding:16px;border-radius:14px;box-shadow:0 6px 18px rgba(15,23,42,0.08);transition:0.3s;position:relative;overflow:hidden;}
+    .card:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 10px 28px rgba(0,0,0,0.2);}
+    .card img{width:100%;height:180px;object-fit:cover;border-radius:10px;}
+    .card h3{margin:10px 0;font-size:18px;color:#333;}
+    .card .meta{display:flex;justify-content:space-between;color:var(--muted);font-weight:600;}
+    .card .buy{margin-top:10px;padding:10px;border-radius:10px;border:0;background:linear-gradient(135deg,#ffb400,#ff6b00);color:#fff;font-weight:700;cursor:pointer;transition:0.3s;}
+    .card .buy:hover{background:#ff9800;transform:scale(1.05);}
+    .card .tag{position:absolute;top:10px;left:-30px;background:#ff6b00;color:#fff;padding:6px 40px;transform:rotate(-45deg);font-size:12px;font-weight:bold;}
+
+    /* EXTRA SECTIONS */
+    .why-choose{margin:40px 18px;padding:40px;background:#fff;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,0.1);}
+    .why-choose h2{text-align:center;color:#0b6fb7;margin-bottom:20px;}
+    .choose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+    .choose-item{text-align:center;padding:20px;}
+    .choose-item i{font-size:40px;color:#ff9800;margin-bottom:12px;}
+
+    .testimonial{margin:40px 18px;padding:40px;background:linear-gradient(135deg,#0b6fb7,#4fc3f7);color:#fff;border-radius:18px;text-align:center;}
+    .testimonial h2{margin-bottom:20px;}
+    .testimonial p{font-size:18px;max-width:700px;margin:0 auto;}
+
+    /* FOOTER */
+    footer{margin-top:40px;padding:20px;background:#0b6fb7;color:#fff;}
+    footer .row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+    .footer-social a{margin:0 8px;color:#fff;font-size:18px;transition:0.3s;}
+    .footer-social a:hover{color:var(--accent);transform:scale(1.2);}
+    footer .links{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+    footer .links a{color:#f0f0f0;font-size:14px;}
+    footer .links a:hover{color:var(--accent);}
+
+    /* RESPONSIVE */
+    @media (max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}.choose-grid{grid-template-columns:repeat(2,1fr);}}
+    @media (max-width:768px){
+      .grid{grid-template-columns:repeat(2,1fr);}
+      .features{flex-direction:column;}
+      .hero{flex-direction:column;text-align:center;height:auto;}
+      .hero .content{max-width:100%;}
+      .hero .banner{margin-top:16px;}
+      .choose-grid{grid-template-columns:1fr;}
+    }
+    @media (max-width:480px){.grid{grid-template-columns:1fr;}.search-bar{display:none;}}
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <img src="amul-logo.jpg" alt="Amul Logo" height="30">
+    <img src="amul-write.jpg" alt="Amul Text" height="30">
+  </div>
+  <nav>
+    <div class="nav-links">
+      <a class="active">Home</a>
+      <a href="product.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="cta" href="buynow.html">Buy Now</a>
+    </div>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+    <i class="fas fa-search"></i>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <video autoplay muted loop playsinline>
+      <source src="amul-video.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+      <h1>INDIA'S MOST TRUSTED DAIRY BRAND</h1>
+      <p>"From the heart of India to your home, we bring you the purest dairy products."</p>
+      <a class="btn" href="product.html">Shop Products</a>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="feature-card">
+      <i class="fas fa-seedling"></i>
+      <strong>Fresh Daily</strong><br>
+      <span>Sourced & delivered daily</span>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-check-circle"></i>
+      <strong>Quality Check</strong><br>
+      <span>Lab tested batches</span>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-truck-fast"></i>
+      <strong>Fast Delivery</strong><br>
+      <span>Same-day in many areas</span>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="products-wrap">
+    <h2>Popular Products</h2>
+    <div class="grid">
+      <div class="card"><div class="tag">Best Seller</div><img src="amu-butter.jpg"><h3>Butter</h3><div class="meta"><div>₹95</div></div><button class="buy">Add</button></div>
+      <div class="card"><div class="tag">Hot</div><img src="amul-banner.jpg"><h3>Milk</h3><div class="meta"><div>₹55</div></div><button class="buy">Add</button></div>
+      <div class="card"><img src="amul-cheese.jpg"><h3>Cheese</h3><div class="meta"><div>₹120</div></div><button class="buy">Add</button></div>
+      <div class="card"><img src="milk-splash.jpg"><h3>Milk Bottle</h3><div class="meta"><div>₹32</div></div><button class="buy">Add</button></div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE -->
+  <section class="why-choose">
+    <h2>Why Choose Amul?</h2>
+    <div class="choose-grid">
+      <div class="choose-item"><i class="fas fa-cow"></i><h3>Farm Fresh Milk</h3><p>Directly from trusted farmers</p></div>
+      <div class="choose-item"><i class="fas fa-shield-alt"></i><h3>Trusted Brand</h3><p>Over 75 years of quality service</p></div>
+      <div class="choose-item"><i class="fas fa-users"></i><h3>Millions of Families</h3><p>Serving 100M+ homes daily</p></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial">
+    <h2>What Our Customers Say</h2>
+    <p>"Amul products are the heart of our kitchen! From milk to butter, everything is fresh, pure, and full of taste. Truly India's pride!"</p>
+    <p>- A Happy Customer</p>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="row">
+    <strong>AMUL-Demo ©2025</strong>
+    <div class="footer-social">
+      <a href="https://facebook.com/amul" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/amul_india" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/amul_india" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
